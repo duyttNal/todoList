@@ -78,8 +78,6 @@ class TodosService extends TodosGateway
 		}
 		catch(Exception $e)
 		{
-            print_r($e);
-            die();
 			self::disconnect();
 			throw $e;
 		}

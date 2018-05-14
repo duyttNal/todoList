@@ -31,12 +31,21 @@ class TodosController
                 $this->deleteTodo();
             } elseif ($op == 'show') {
                 $this->showTodo();
+            }elseif ($op == 'calendar') {
+                $this->showCalendar();
             } else {
                 $this->showError("Page not found", "Page for execution" . $op . " was not found");
             }
         } catch (Exception $e) {
             $this->showError("Application error", $e->getMessage());
         }
+    }
+
+    public function showCalendar()
+    {
+        $orderby = isset($_GET['orderby']) ? $_GET['orderby'] : null;
+        $todos = $this->TodosService->getAllTodos($orderby);
+        include './view/calendar.php';
     }
 
     public function listTodos()
