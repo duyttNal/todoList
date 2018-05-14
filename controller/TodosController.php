@@ -4,7 +4,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/model/TodosService.php';
 class TodosController
 {
 
-    private $TodosService = null;
+    private $todosService = null;
 
     public function __construct()
     {
@@ -42,7 +42,7 @@ class TodosController
     public function listTodos()
     {
         $orderby = isset($_GET['orderby']) ? $_GET['orderby'] : null;
-        $Todos = $this->TodosService->getAllTodos($orderby);
+        $todos = $this->TodosService->getAllTodos($orderby);
         include './view/todos.php';
     }
 
@@ -59,8 +59,8 @@ class TodosController
 
         if (isset($_POST['form-submitted'])) {
             $work_name = isset($_POST['work_name']) ? trim($_POST['work_name']) : null;
-            $start_date = isset($_POST['start_date']) ? trim($_POST['start_date']) : null;
-            $end_date = isset($_POST['end_date']) ? trim($_POST['end_date']) : null;
+            $start_date = isset($_POST['start_date']) ? date('Y-m-d',strtotime(trim($_POST['start_date']))) : null;
+            $end_date = isset($_POST['end_date']) ? date('Y-m-d',strtotime(trim($_POST['end_date']))) : null;
             $status = isset($_POST['status']) ? trim($_POST['status']) : null;
 
             try {
@@ -85,14 +85,14 @@ class TodosController
         $status = '';
         $id = $_GET['id'];
 
-        $Todo = $this->TodosService->getTodo($id);
+        $todo = $this->TodosService->getTodo($id);
 
         $errors = array();
 
         if (isset($_POST['form-submitted'])) {
             $work_name = isset($_POST['work_name']) ? trim($_POST['work_name']) : null;
-            $start_date = isset($_POST['start_date']) ? trim($_POST['start_date']) : null;
-            $end_date = isset($_POST['end_date']) ? trim($_POST['end_date']) : null;
+            $start_date = isset($_POST['start_date']) ? date('Y-m-d',strtotime(trim($_POST['start_date']))) : null;
+            $end_date = isset($_POST['end_date']) ? date('Y-m-d',strtotime(trim($_POST['end_date']))) : null;
             $status = isset($_POST['status']) ? trim($_POST['status']) : null;
             try {
                 $this->TodosService->editTodo($work_name, $start_date, $end_date, $id, $status);
@@ -119,9 +119,9 @@ class TodosController
         if (!$id) {
             throw new Exception('Internal error');
         }
-        $Todo = $this->TodosService->getTodo($id);
+        $todo = $this->TodosService->getTodo($id);
 
-        print_r($Todo);
+        print_r($todo);
         die();
 
         include './view/delete.php';
@@ -137,7 +137,7 @@ class TodosController
         if (!$id) {
             throw new Exception('Internal error');
         }
-        $Todo = $this->TodosService->getTodo($id);
+        $todo = $this->TodosService->getTodo($id);
 
         include './view/view.php';
     }

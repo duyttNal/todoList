@@ -27,7 +27,7 @@
 					<div class="control-group">
 						<label class="control-label">Work Name</label>
 							<div class="controls">
-								<input type="text" class="form-control" name="work_name" placeholder="Work name" value="<?php echo htmlentities($Todo->work_name); ?>">
+								<input type="text" class="form-control" name="work_name" placeholder="Work name" value="<?php echo htmlentities($todo->work_name); ?>">
 								<span class="help-inline"></span>
 							</div>
 					</div>
@@ -35,7 +35,7 @@
 					<div class="control-group">
 						<label class="control-label">Start date</label>
 							<div class="controls">
-								<input type="text" class="form-control" id="from"  name="start_date" placeholder="Start Date" value="<?php echo htmlentities($Todo->start_date); ?>">
+								<input type="text" class="form-control" id="from"  name="start_date" placeholder="Start Date" value="<?php echo htmlentities(date('m/d/Y',strtotime($todo->start_date))); ?>">
 								<span class="help-inline"></span>
 							</div>
 					</div>
@@ -43,7 +43,7 @@
 					<div class="control-group">
 						<label class="control-label">End Date</label>
 							<div class="controls">
-								<input type="text" class="form-control" id="to" name="end_date" placeholder="End date" value="<?php echo htmlentities($Todo->end_date); ?>">
+								<input type="text" class="form-control" id="to" name="end_date" placeholder="End date" value="<?php echo htmlentities(date('m/d/Y',strtotime($todo->end_date))); ?>">
 								<span class="help-inline"></span>
 							</div>
 					</div>
@@ -52,9 +52,9 @@
                         <label class="control-label">Status</label>
                         <div class="controls">
                             <select class="form-control" name="status" id="exampleSelect1">
-                                <option <?php $Todo->end_date==1 ? 'selected':null?> value="1">Planning</option>
-                                <option <?php $Todo->end_date==2 ? 'selected':null?> value="2">Doing</option>
-                                <option <?php $Todo->end_date==3 ? 'selected':null?> value="3">Complete</option>
+                                <option <?php if($todo->status==1) echo 'selected="selected"'?> value="1">Planning</option>
+                                <option <?php if($todo->status==2) echo 'selected="selected"'?> value="2">Doing</option>
+                                <option <?php if($todo->status==3) echo 'selected="selected"'?> value="3">Complete</option>
                             </select>
                         </div>
                     </div>

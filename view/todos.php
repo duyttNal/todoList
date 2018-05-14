@@ -27,13 +27,13 @@
 					</thead>
 
 					<tbody>
-						<?php foreach ($Todos as $Todo) : ?>
+						<?php foreach ($todos as $todo) : ?>
 							<tr>
-								<td><?php echo htmlentities($Todo->work_name);  ?></td>
-								<td><?php echo htmlentities($Todo->start_date); ?></td>
-								<td><?php echo htmlentities($Todo->end_date); ?></td>
+								<td><?php echo htmlentities($todo->work_name);  ?></td>
+								<td><?php echo htmlentities(date('m/d/Y',strtotime($todo->start_date))); ?></td>
+								<td><?php echo htmlentities(date('m/d/Y',strtotime($todo->end_date))); ?></td>
 								<td><?php
-                                    switch ($Todo->status) {
+                                    switch ($todo->status) {
                                         case 1:
                                             echo '<span class="badge badge-primary">Planning</span>';
                                             break;
@@ -41,13 +41,13 @@
                                             echo '<span class="badge badge-secondary">Doing</span>';
                                             break;
                                         default:
-                                            echo '<span class="badge badge-success">Success</span>';
+                                            echo '<span class="badge badge-success">Complete</span>';
                                             break;
                                     }?></td>
 								<td>
-									<a class="btn btn-info" href="index.php?op=show&id=<?php echo $Todo->id; ?>">View</a>
-									<a class="btn btn-success" href="index.php?op=edit&id=<?php echo $Todo->id; ?>">Update</a>
-									<a class="btn btn-danger" href="index.php?op=delete&id=<?php echo $Todo->id; ?>">Delete Todo</a>
+									<a class="btn btn-info" href="index.php?op=show&id=<?php echo $todo->id; ?>">View</a>
+									<a class="btn btn-success" href="index.php?op=edit&id=<?php echo $todo->id; ?>">Update</a>
+									<a class="btn btn-danger" href="index.php?op=delete&id=<?php echo $todo->id; ?>">Delete Todo</a>
 								</td>
 
 							</tr>

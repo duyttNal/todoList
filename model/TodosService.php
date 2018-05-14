@@ -7,7 +7,7 @@ require_once 'Database.php';
 class TodosService extends TodosGateway
 {
 
-	private $TodosGateway = null;
+	private $todosGateway = null;
 
 	public function __construct()
 	{

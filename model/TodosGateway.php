@@ -14,11 +14,11 @@ class TodosGateway extends Database
         $sql->execute();
         // $result = $sql->fetchAll(PDO::FETCH_ASSOC);
 
-        $Todos = array();
+        $todos = array();
         while ($obj = $sql->fetch(PDO::FETCH_OBJ)) {
-            $Todos[] = $obj;
+            $todos[] = $obj;
         }
-        return $Todos;
+        return $todos;
     }
 
     public function selectById($id)
@@ -43,7 +43,7 @@ class TodosGateway extends Database
     {
         $pdo = Database::connect();
         $sql = $pdo->prepare("UPDATE todos SET work_name = ?, start_date = ?, end_date = ?, status = ? WHERE id = ? LIMIT 1");
-        $result = $sql->execute(array($work_name, $start_date, $end_date, $id, $status));
+        $result = $sql->execute(array($work_name, $start_date, $end_date, $status, $id));
     }
 
     public function delete($id)
