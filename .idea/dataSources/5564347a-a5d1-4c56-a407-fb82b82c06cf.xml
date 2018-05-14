@@ -930,35 +930,38 @@
       <Charset>utf8mb4</Charset>
       <DefaultForCharset>0</DefaultForCharset>
     </collation>
-    <table id="236" parent="10" name="contacts">
+    <table id="236" parent="10" name="todos">
       <Engine>InnoDB</Engine>
     </table>
-    <table id="237" parent="10" name="todos">
-      <Engine>InnoDB</Engine>
-    </table>
-    <column id="238" parent="236" name="name">
+    <column id="237" parent="236" name="work_name">
       <Position>1</Position>
       <DataType>varchar(255)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="239" parent="236" name="email">
+    <column id="238" parent="236" name="start_date">
       <Position>2</Position>
-      <DataType>varchar(255)|0</DataType>
+      <DataType>datetime|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="240" parent="236" name="phone">
+    <column id="239" parent="236" name="end_date">
       <Position>3</Position>
-      <DataType>int(11)|0</DataType>
+      <DataType>datetime|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="240" parent="236" name="status">
+      <Position>4</Position>
+      <DataType>smallint(6)|0</DataType>
+      <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="241" parent="236" name="id">
-      <Position>4</Position>
+      <Position>5</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="242" parent="236" name="contacts_id_uindex">
+    <index id="242" parent="236" name="TodoList_id_uindex">
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
@@ -967,48 +970,7 @@
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="244" parent="236" name="contacts_id_uindex">
-      <ColNames>id</ColNames>
-      <UnderlyingIndexName>contacts_id_uindex</UnderlyingIndexName>
-    </key>
-    <column id="245" parent="237" name="work_name">
-      <Position>1</Position>
-      <DataType>varchar(255)|0</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="246" parent="237" name="start_date">
-      <Position>2</Position>
-      <DataType>datetime|0</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="247" parent="237" name="end_date">
-      <Position>3</Position>
-      <DataType>datetime|0</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="248" parent="237" name="status">
-      <Position>4</Position>
-      <DataType>smallint(6)|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="249" parent="237" name="id">
-      <Position>5</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>1</SequenceIdentity>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <index id="250" parent="237" name="TodoList_id_uindex">
-      <ColNames>id</ColNames>
-      <Unique>1</Unique>
-    </index>
-    <key id="251" parent="237" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <key id="252" parent="237" name="TodoList_id_uindex">
+    <key id="244" parent="236" name="TodoList_id_uindex">
       <ColNames>id</ColNames>
       <UnderlyingIndexName>TodoList_id_uindex</UnderlyingIndexName>
     </key>
